@@ -19,7 +19,8 @@ namespace FunctionApp43
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             User data = JsonConvert.DeserializeObject<User>(requestBody);
             UserContext userContext = new UserContext();
-            return new OkObjectResult("");
+            userContext.Add(data);
+            return new OkObjectResult($"{data.UserName} was added");
         }
     }
 }
